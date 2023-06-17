@@ -20,6 +20,7 @@
         android:textStyle="bold"
         android:textSize="30sp"
         android:textColor="#f02e65"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailLayout"
         android:layout_marginTop="20dp"
@@ -27,7 +28,6 @@
         android:layout_height="wrap_content"
         app:boxBackgroundColor="@android:color/transparent"
         android:background="@android:color/transparent"
-        android:paddingStart="-15dp"
         tools:ignore="RtlSymmetry">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -48,7 +48,6 @@
         app:passwordToggleEnabled="true"
         app:boxBackgroundColor="@android:color/transparent"
         android:background="@android:color/transparent"
-        android:paddingStart="-15dp"
         tools:ignore="RtlSymmetry">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -59,11 +58,12 @@
             android:hint="@string/placeholder_input_password"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+
     <Button
-        android:id="@+id/login"
+        android:id="@+id/loginBtn"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="57dp"
+        android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="@string/login"
         android:textAllCaps="false"/>

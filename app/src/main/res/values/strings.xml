@@ -19,5 +19,7 @@
     <string name="device_model">Device Model:</string>
     <string name="ip_address">IP Address:</string>
     <string name="user_id">User ID:</string>
+    <string name="username">User Name:</string>
+    <string name="usermail">User Email:</string>
     <string name="welcome_successfully_login">Welcome! \n You have successfully logged \n into the app!</string>
 </resources>

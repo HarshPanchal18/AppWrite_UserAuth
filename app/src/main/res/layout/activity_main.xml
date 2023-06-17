@@ -3,37 +3,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="48dp"
-    android:gravity="center">
+    tools:context=".MainActivity">
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/appwrite"
-        android:contentDescription="@string/logo_app" />
+        android:contentDescription="@string/logo_app"
+        android:src="@drawable/appwrite" />
+
     <TextView
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp"
+        android:alpha="0.7"
         android:text="@string/welcome_successfully_login"
-        android:textSize="17sp"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:alpha="0.7"/>
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
     <LinearLayout
-        android:layout_marginBottom="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_marginBottom="7dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            android:textColor="#f02e65"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/usermail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            android:textColor="#f02e65"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/user_id"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
+
         <TextView
             android:id="@+id/userID"
             android:layout_width="wrap_content"
@@ -41,19 +92,22 @@
             android:text="Hello World!"
             android:textColor="#f02e65"
             android:textSize="17sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginBottom="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_marginBottom="7dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ip_address"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
+
         <TextView
             android:id="@+id/ip"
             android:layout_width="wrap_content"
@@ -61,19 +115,22 @@
             android:text="Hello World!"
             android:textColor="#f02e65"
             android:textSize="17sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginBottom="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_marginBottom="7dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/device_model"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
+
         <TextView
             android:id="@+id/deviceMod"
             android:layout_width="wrap_content"
@@ -81,19 +138,22 @@
             android:text="Hello World!"
             android:textColor="#f02e65"
             android:textSize="17sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginBottom="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_marginBottom="7dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/device_brand"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
+
         <TextView
             android:id="@+id/deviceBra"
             android:layout_width="wrap_content"
@@ -101,19 +161,22 @@
             android:text="Hello World!"
             android:textColor="#f02e65"
             android:textSize="17sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginBottom="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_marginBottom="7dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/device_os"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
+
         <TextView
             android:id="@+id/OS"
             android:layout_width="wrap_content"
@@ -121,18 +184,21 @@
             android:text="Hello World!"
             android:textColor="#f02e65"
             android:textSize="17sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/device_os_version"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
+
         <TextView
             android:id="@+id/OsVer"
             android:layout_width="wrap_content"
@@ -140,15 +206,16 @@
             android:text="Hello World!"
             android:textColor="#f02e65"
             android:textSize="17sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
+
     <Button
         android:id="@+id/endSession"
-        android:layout_marginTop="50dp"
         android:layout_width="140dp"
         android:layout_height="50dp"
+        android:layout_marginTop="50dp"
         android:text="@string/end_session"
         android:textAllCaps="false"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white" />
 
 </LinearLayout>

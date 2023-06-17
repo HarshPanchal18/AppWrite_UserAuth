@@ -4,6 +4,6 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
-
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
     <style name="Theme.AppWrite_UserAuth" parent="Base.Theme.AppWrite_UserAuth" />
 </resources>
