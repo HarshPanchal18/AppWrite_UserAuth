@@ -8,10 +8,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.appwrite_userauth.configs.AppwriteManager
+import com.example.appwrite_userauth.configs.AppwriteManager.account
 import com.example.appwrite_userauth.databinding.ActivityMainBinding
-import io.appwrite.Client
 import io.appwrite.exceptions.AppwriteException
-import io.appwrite.models.User
 import io.appwrite.services.Account
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -28,12 +28,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val client = Client(this)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Project Endpoint
-            .setProject("648b140a11900d9078cd")
-            .setSelfSigned(status = true) // For self signed certificates, only use for development
+        AppwriteManager.initialize(this)
 
-        val account = Account(client)
         CoroutineScope(Dispatchers.Main).launch {
             val user = account.get()
             binding.username.text = user.name
@@ -60,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             OsVer.text = deviceOsVer
         }
 
-        binding.endSession.setOnClickListener {
+        binding.logoutBtn.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("End Session")
                 .setMessage("Are you sure you want to end your session?")
@@ -70,6 +66,10 @@ class MainActivity : AppCompatActivity() {
                 }.setNegativeButton("Cancel") { dialogInterface, _ ->
                     dialogInterface.cancel()
                 }.show()
+        }
+
+        binding.updatePassword.setOnClickListener {
+            startActivity(Intent(this@MainActivity,UpdatePasswordActivity::class.java))
         }
     }
 

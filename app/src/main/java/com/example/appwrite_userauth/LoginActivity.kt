@@ -9,6 +9,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.appwrite_userauth.configs.AppwriteManager
+import com.example.appwrite_userauth.configs.AppwriteManager.client
 import com.example.appwrite_userauth.databinding.ActivityLoginBinding
 import io.appwrite.Client
 import io.appwrite.exceptions.AppwriteException
@@ -24,10 +26,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Project Endpoint
-            .setProject("648b140a11900d9078cd")
-            .setSelfSigned(status = true) // For self signed certificates, only use for development
+        AppwriteManager.initialize(applicationContext)
 
         binding.loginBtn.setOnClickListener {
             val email = binding.email.text.toString()

@@ -7,8 +7,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.appwrite_userauth.configs.AppwriteManager
+import com.example.appwrite_userauth.configs.AppwriteManager.account
 import com.example.appwrite_userauth.databinding.ActivityRegisterBinding
-import io.appwrite.Client
 import io.appwrite.exceptions.AppwriteException
 import io.appwrite.services.Account
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -22,12 +23,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val client = Client(applicationContext)
-            .setEndpoint("https://cloud.appwrite.io/v1") // Project Endpoint
-            .setProject("648b140a11900d9078cd")
-            .setSelfSigned(status = true) // For self signed certificates, only use for development
-
-        val account = Account(client)
+        AppwriteManager.initialize(applicationContext)
 
         binding.registerBtn.setOnClickListener {
             val name = binding.name.text.toString()
