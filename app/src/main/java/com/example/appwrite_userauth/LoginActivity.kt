@@ -21,6 +21,8 @@ import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -29,9 +31,18 @@ class LoginActivity : AppCompatActivity() {
         AppwriteManager.initialize(applicationContext)
 
         binding.loginBtn.setOnClickListener {
-            val email = binding.email.text.toString()
-            val password = binding.password.text.toString()
-            loginProcess(client, email, password)
+            /*val email = binding.email.text.toString()
+            val password = binding.password.text.toString()`
+            loginProcess(client, email, password)*/
+            val account = Account(client)
+                GlobalScope.launch {
+                account.createOAuth2Session(
+                    activity = this@LoginActivity,
+                    provider = "auth0"
+                )
+            }
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            finish()
         }
 
         binding.registerActivity.setOnClickListener {
@@ -59,7 +70,16 @@ class LoginActivity : AppCompatActivity() {
                 val userId = response.userId
                 val username = response.clientName
 
-                gotoMainWithPrefs(ip, deviceModel, deviceBrand, deviceOS, deviceOSversion, sessionId, userId, username)
+                gotoMainWithPrefs(
+                    ip,
+                    deviceModel,
+                    deviceBrand,
+                    deviceOS,
+                    deviceOSversion,
+                    sessionId,
+                    userId,
+                    username
+                )
             } catch (e: AppwriteException) {
                 this@LoginActivity.runOnUiThread {
                     Toast.makeText(this@LoginActivity, e.message.toString(), Toast.LENGTH_SHORT)

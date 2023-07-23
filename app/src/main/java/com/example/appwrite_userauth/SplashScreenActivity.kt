@@ -20,11 +20,11 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val handler = Handler()
         handler.postDelayed({
-            val check = getSharedPreferences("is_logged", Context.MODE_PRIVATE)
+            /*val check = getSharedPreferences("is_logged", Context.MODE_PRIVATE)
                 .getString("SESSION_ID", null)
             if (check is String && check.isNotEmpty())
                 startActivity(Intent(this, MainActivity::class.java))
-            else
+            else*/
                 startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }, 2000)

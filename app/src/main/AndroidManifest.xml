@@ -12,37 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppWrite_UserAuth"
         tools:targetApi="31">
-        <activityr
-            android:name=".UpdatePasswordActivity"
-            android:exported="true">
-
-            <intent-filter android:label="view_http_update_password">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
-                <data
-                    android:host="www.example.com"
-                    android:pathPrefix="/appwrite"
-                    android:scheme="http" />
-                <!-- note that the leading "/" is required for pathPrefix-->
-            </intent-filter>
-
-            <intent-filter android:label="view_example_update_password">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
-                <data
-                    android:host="appwrite"
-                    android:scheme="example" />
-                <!-- note that the leading "/" is required for pathPrefix-->
-            </intent-filter>
-
-        </activityr>
-
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
@@ -52,18 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="io.appwrite.views.CallbackActivity"
-            android:exported="true">
+
+        <!-- Add this inside the `<application>` tag, alongside the existing `<activity>` tags -->
+        <activity android:name="io.appwrite.views.CallbackActivity" android:exported="true">
             <intent-filter android:label="android_web_auth">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="appwrite-callback-6270f31225c14c3205c6" />
+                <data android:scheme="appwrite-callback-648b140a11900d9078cd" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
