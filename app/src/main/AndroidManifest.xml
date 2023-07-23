@@ -12,9 +12,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppWrite_UserAuth"
         tools:targetApi="31">
-        <activity
+        <activityr
             android:name=".UpdatePasswordActivity"
-            android:exported="false" />
+            android:exported="true">
+
+            <intent-filter android:label="view_http_update_password">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
+                <data
+                    android:host="www.example.com"
+                    android:pathPrefix="/appwrite"
+                    android:scheme="http" />
+                <!-- note that the leading "/" is required for pathPrefix-->
+            </intent-filter>
+
+            <intent-filter android:label="view_example_update_password">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
+                <data
+                    android:host="appwrite"
+                    android:scheme="example" />
+                <!-- note that the leading "/" is required for pathPrefix-->
+            </intent-filter>
+
+        </activityr>
+
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">

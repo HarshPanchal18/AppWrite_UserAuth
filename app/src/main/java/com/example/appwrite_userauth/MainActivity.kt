@@ -95,7 +95,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun flushSharedPrefs() {
-        sharedPreferences = getSharedPreferences("is_logged", Context.MODE_PRIVATE)
         sharedPreferences.edit()
             .remove("SESSION_ID").remove("ip").remove("device_model")
             .remove("device_brand").remove("device_os").remove("device_os_version")

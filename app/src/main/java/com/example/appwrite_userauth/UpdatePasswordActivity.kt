@@ -3,10 +3,11 @@ package com.example.appwrite_userauth
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.appwrite_userauth.configs.AppwriteManager
 import com.example.appwrite_userauth.configs.AppwriteManager.account
 import com.example.appwrite_userauth.databinding.ActivityUpdatePasswordBinding
@@ -16,11 +17,12 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
+@OptIn(DelicateCoroutinesApi::class)
 class UpdatePasswordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUpdatePasswordBinding
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sessionID: String
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUpdatePasswordBinding.inflate(layoutInflater)
@@ -28,19 +30,43 @@ class UpdatePasswordActivity : AppCompatActivity() {
 
         AppwriteManager.initialize(this)
         sharedPreferences = getSharedPreferences("is_logged", Context.MODE_PRIVATE)
-        val sessionID = sharedPreferences.getString("SESSION_ID", null)
+        sessionID = sharedPreferences.getString("SESSION_ID", null)!!
 
+        val oldPassword = binding.oldPassword.text.toString().trim()
         binding.updatePasswordBtn.setOnClickListener {
-            GlobalScope.launch {
-                try {
-                    account.updatePassword(
-                        binding.password.text.toString().trim(),
-                        binding.oldPassword.text.toString().trim()
-                    )
-                    flushSession(account, sessionID!!)
-                } catch (e: AppwriteException) {
-                    Log.d("UpdatePasswordException", e.message.toString())
-                }
+            if (oldPassword.isNotEmpty())
+                rememberOldPassword()
+            else
+                forgotOldPassword()
+        }
+    }
+
+    private fun rememberOldPassword() {
+        GlobalScope.launch {
+            try {
+                account.updatePassword(
+                    binding.password.text.toString().trim(),
+                    binding.oldPassword.text.toString().trim()
+                )
+                flushSession(account, sessionID)
+            } catch (e: AppwriteException) {
+                Log.d("UpdatePasswordException", e.message.toString())
+            }
+        }
+    }
+
+    private fun forgotOldPassword() {
+        val intent: Intent = intent
+        val action: String? = intent.action
+        val data: Uri? = intent.data
+        GlobalScope.launch {
+            try {
+                account.createRecovery(
+                    email = account.get().email,
+                    url = "https://example.com"
+                )
+            } catch (e: AppwriteException) {
+                Log.d("UpdatePasswordException", e.message.toString())
             }
         }
     }
