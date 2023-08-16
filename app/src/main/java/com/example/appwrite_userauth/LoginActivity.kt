@@ -31,18 +31,23 @@ class LoginActivity : AppCompatActivity() {
         AppwriteManager.initialize(applicationContext)
 
         binding.loginBtn.setOnClickListener {
-            /*val email = binding.email.text.toString()
-            val password = binding.password.text.toString()`
-            loginProcess(client, email, password)*/
-            val account = Account(client)
+            val email = binding.email.text.toString()
+            val password = binding.password.text.toString()
+
+            if (email.isEmpty() && password.isEmpty())
+                loginProcess(client, email, password)
+            else {
+                val account = Account(client)
                 GlobalScope.launch {
-                account.createOAuth2Session(
-                    activity = this@LoginActivity,
-                    provider = "auth0"
-                )
+                    // https://dev.to/appwrite/auth0-authentication-with-appwrite-7hk
+                    account.createOAuth2Session(
+                        activity = this@LoginActivity,
+                        provider = "auth0"
+                    )
+                }
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
             }
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-            finish()
         }
 
         binding.registerActivity.setOnClickListener {
